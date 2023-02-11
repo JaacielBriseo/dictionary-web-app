@@ -1,0 +1,4 @@
+//npm install --save-dev eslint-config-react-app eslint@^8.0.0
+{
+  "extends": "react-app"
+}
