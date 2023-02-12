@@ -28,7 +28,7 @@ export const DictionaryApp = () => {
 	}, [fetchData, query]);
 
 	return (
-		<div className='p-5'>
+		<div className='p-5 bg-white dark:bg-VeryDark'>
 			<Navbar />
 			<form className='flex flex-col justify-center items-center'>
 				<input
