@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState, useRef, ChangeEvent } from 'react';
 import { AxiosResponse } from 'axios';
 import { dictionaryApi } from './api/dictionaryApi';
 import { DictionaryResponse } from './interfaces/interfaces';
+import { Navbar } from './components/Navbar';
 
 export const DictionaryApp = () => {
 	const [data, setData] = useState<DictionaryResponse>();
@@ -27,8 +28,9 @@ export const DictionaryApp = () => {
 	}, [fetchData, query]);
 
 	return (
-		<>
-			<form className='flex flex-col justify-center items-center mt-20'>
+		<div className='p-5'>
+			<Navbar />
+			<form className='flex flex-col justify-center items-center'>
 				<input
 					type='text'
 					name='query'
@@ -44,6 +46,6 @@ export const DictionaryApp = () => {
 				</button>
 			</form>
 			<div>{JSON.stringify(data)}</div>
-		</>
+		</div>
 	);
 };
