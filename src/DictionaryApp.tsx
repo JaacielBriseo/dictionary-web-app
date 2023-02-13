@@ -1,33 +1,11 @@
-import { useCallback, useEffect, useState, useRef, ChangeEvent } from 'react';
-import { AxiosResponse } from 'axios';
-import { dictionaryApi } from './api/dictionaryApi';
-import { DictionaryResponse } from './interfaces/interfaces';
+import { useContext } from 'react';
 import { Navbar } from './components/Navbar';
 import { useTheme } from './hooks/useTheme';
+import { DictionaryContext } from './contexts/Dictionary/DictionaryContext';
 
 export const DictionaryApp = () => {
 	const { font } = useTheme();
-	const [data, setData] = useState<DictionaryResponse>();
-	const [query, setQuery] = useState('');
-	const [inputValue, setInputValue] = useState('');
-	const debounceRef = useRef<ReturnType<typeof setTimeout>>();
-
-	const fetchData = useCallback(async () => {
-		const response: AxiosResponse<DictionaryResponse> = await dictionaryApi.get(`/${query}`);
-		setData(response.data);
-	}, [query]);
-
-	const onQueryChange = (event: ChangeEvent<HTMLInputElement>) => {
-		if (debounceRef.current) clearTimeout(debounceRef.current);
-		debounceRef.current = setTimeout(() => {
-			setQuery(event.target.value);
-		}, 1000);
-	};
-
-	useEffect(() => {
-		if (query === '') return;
-		fetchData();
-	}, [fetchData, query]);
+	const { inputValue, onQueryChange, setInputValue, data } = useContext(DictionaryContext);
 
 	return (
 		<div className={`p-5 bg-white dark:bg-VeryDark ${font}`}>
