@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { ThemeContext } from "./ThemeContext";
+import { useEffect, useState } from 'react';
+import { Font, ThemeContext } from './ThemeContext';
 
 interface Props {
 	children: React.ReactNode | React.ReactNode[];
@@ -7,6 +7,7 @@ interface Props {
 export const ThemeContextProvider: React.FC<Props> = ({ children }) => {
 	const ThemeProvider = ThemeContext.Provider;
 	const [theme, setTheme] = useState<string>(localStorage.getItem('theme') || 'light');
+	const [font, setFont] = useState<Font>('font-mono');
 
 	useEffect(() => {
 		const root = document.documentElement;
@@ -15,5 +16,5 @@ export const ThemeContextProvider: React.FC<Props> = ({ children }) => {
 		return () => root.classList.remove(theme);
 	}, [theme]);
 
-	return <ThemeProvider value={{ theme, setTheme }}>{children}</ThemeProvider>;
+	return <ThemeProvider value={{ theme, setTheme, font, setFont }}>{children}</ThemeProvider>;
 };

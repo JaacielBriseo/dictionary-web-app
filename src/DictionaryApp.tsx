@@ -3,15 +3,17 @@ import { AxiosResponse } from 'axios';
 import { dictionaryApi } from './api/dictionaryApi';
 import { DictionaryResponse } from './interfaces/interfaces';
 import { Navbar } from './components/Navbar';
+import { useTheme } from './hooks/useTheme';
 
 export const DictionaryApp = () => {
+	const { font } = useTheme();
 	const [data, setData] = useState<DictionaryResponse>();
 	const [query, setQuery] = useState('');
 	const [inputValue, setInputValue] = useState('');
 	const debounceRef = useRef<ReturnType<typeof setTimeout>>();
 
 	const fetchData = useCallback(async () => {
-		const response: AxiosResponse<DictionaryResponse, []> = await dictionaryApi.get(`/${query}`);
+		const response: AxiosResponse<DictionaryResponse> = await dictionaryApi.get(`/${query}`);
 		setData(response.data);
 	}, [query]);
 
@@ -28,7 +30,7 @@ export const DictionaryApp = () => {
 	}, [fetchData, query]);
 
 	return (
-		<div className='p-5 bg-white dark:bg-VeryDark'>
+		<div className={`p-5 bg-white dark:bg-VeryDark ${font}`}>
 			<Navbar />
 			<form className='flex flex-col justify-center items-center'>
 				<input
