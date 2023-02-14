@@ -15,7 +15,7 @@ module.exports = {
 				LightDark: '#2D2D2D',
 				VeryLightDark: '#3A3A3A',
 				VeryGray: '#838383',
-				Gray: 'rgb(233,233,233)',
+				Gray: 'rgb(233,233,233,1)',
 				Purplish: 'rgb(164,69,237)',
 				SoftRed: 'rgb(255,82,82)',
 			},
