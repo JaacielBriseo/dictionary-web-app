@@ -2,7 +2,7 @@ import { ChangeEvent, createContext } from "react";
 import { DictionaryResponse } from "../../interfaces/interfaces";
 
 interface DictionaryContextValues {
-  data: DictionaryResponse | undefined;
+  data: DictionaryResponse[] | undefined;
   query: string;
   inputValue: string;
   setInputValue: (value: string) => void;

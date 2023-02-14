@@ -10,15 +10,17 @@ interface Props {
 }
 
 export const DictionaryProvider: React.FC<Props> = ({ children }) => {
-	const [{ data, query, inputValue }, dispatch] = useReducer(dictionaryReducer, {
+	const initialState = {
 		data: undefined,
 		query: '',
 		inputValue: '',
-	});
+	};
+	const [state, dispatch] = useReducer(dictionaryReducer, initialState);
 	const debounceRef = useRef<ReturnType<typeof setTimeout>>();
+	const { inputValue, query, data } = state;
 
 	const fetchData = useCallback(async () => {
-		const response: AxiosResponse<DictionaryResponse> = await dictionaryApi.get(`/${query}`);
+		const response: AxiosResponse<DictionaryResponse[]> = await dictionaryApi.get(`/${query}`);
 		dispatch({ type: 'set_data', payload: response.data });
 	}, [query]);
 
