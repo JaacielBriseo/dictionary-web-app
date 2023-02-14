@@ -2,3 +2,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+.bg-right-15 {
+	background-position: right 15px center;
+}

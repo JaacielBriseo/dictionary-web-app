@@ -30,7 +30,7 @@ export const DictionaryProvider: React.FC<Props> = ({ children }) => {
 	};
 
 	useEffect(() => {
-		if (query === '') return;
+		if (!query.length) return;
 		fetchData();
 	}, [fetchData, query]);
 
