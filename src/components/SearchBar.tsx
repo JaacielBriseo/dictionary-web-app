@@ -10,7 +10,7 @@ export const SearchBar = () => {
 				onQueryChange(e);
 				setInputValue(e.target.value);
 			}}
-			className='w-full h-12 px-5 rounded-3xl bg-Gray bg-[url(/images/icon-search.svg)] bg-no-repeat bg-right-15'
+			className='w-full h-12 px-5 rounded-3xl bg-Gray bg-[url(/images/icon-search.svg)] bg-no-repeat bg-right-15 dark:bg-Dark dark:text-white'
 		/>
 	);
 };
