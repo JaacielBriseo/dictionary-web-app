@@ -5,3 +5,9 @@
 .bg-right-15 {
 	background-position: right 15px center;
 }
+
+@layer base{
+	body{
+		@apply bg-white dark:bg-VeryDark
+	}
+}

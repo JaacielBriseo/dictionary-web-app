@@ -44,7 +44,7 @@ export const DataRenderer = () => {
 					<Fragment key={meaning.partOfSpeech}>
 						<div className='flex items-center'>
 							<p className='w-1/12 font-bold text-lg text-LightDark dark:text-white'>{meaning.partOfSpeech}</p>
-							<div className='w-9/12 h-[1px] bg-Gray mx-auto dark:bg-VeryGray' />
+							<div className='w-9/12 h-[1px] bg-Gray mx-auto dark:bg-VeryGray md:w-10/12' />
 						</div>
 						<div className='space-y-5'>
 							<span className='text-VeryGray'>Meaning</span>

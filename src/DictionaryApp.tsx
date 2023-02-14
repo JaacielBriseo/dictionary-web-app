@@ -7,7 +7,7 @@ export const DictionaryApp = () => {
 	const { font } = useTheme();
 
 	return (
-		<div className={`px-7 py-5 space-y-7 min-h-screen bg-white dark:bg-VeryDark ${font}`}>
+		<div className={`px-7 py-5 space-y-7 lg:w-3/5 lg:mx-auto ${font}`}>
 			<Navbar />
 			<SearchBar />
 			<DataRenderer />
