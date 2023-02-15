@@ -19,7 +19,6 @@ export const DataRenderer = () => {
 		return <>Loading</>;
 	}
 	const dictionary = data[0];
-	console.log(dictionary);
 	return (
 		<div className='space-y-7'>
 			<header className='w-full h-16 flex justify-between'>

@@ -1,7 +1,5 @@
-import { Navbar } from './components/Navbar';
 import { useTheme } from './hooks';
-import { SearchBar } from './components/SearchBar';
-import { DataRenderer } from './components/DataRenderer';
+import { DataRenderer, Navbar, SearchBar } from './components';
 
 export const DictionaryApp = () => {
 	const { font } = useTheme();

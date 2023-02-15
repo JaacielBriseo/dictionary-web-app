@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { Font, ThemeContext } from './ThemeContext';
+import { ThemeContext } from '.';
+import { Font } from '../../interfaces';
 
 interface Props {
 	children: React.ReactNode | React.ReactNode[];

@@ -1,7 +1,5 @@
 import { createContext } from 'react';
-
-export type Font = 'font-mono' | 'font-serif' | 'font-sans';
-
+import { Font } from '../../interfaces';
 interface ThemeContextValues {
 	theme: string;
 	setTheme: React.Dispatch<React.SetStateAction<string>>;

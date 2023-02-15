@@ -1,6 +1,5 @@
-import { useTheme } from '../hooks/useTheme';
-import { DropdownFontSelector } from './DropdownFontSelector';
-import { ThemeToggler } from './ThemeToggler';
+import { useTheme } from '../hooks';
+import { DropdownFontSelector, ThemeToggler } from '.';
 
 export const Navbar = () => {
 	const { theme } = useTheme();

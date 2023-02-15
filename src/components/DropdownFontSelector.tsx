@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { useTheme } from '../hooks/useTheme';
-import { Font } from '../contexts/Theme/ThemeContext';
+import { useTheme } from '../hooks';
+import { Font } from '../interfaces';
 
 export const DropdownFontSelector = () => {
 	const [isDropdownOpen, setIsDropdownOpen] = useState(false);

@@ -1,27 +1,35 @@
 import { ChangeEvent, ReactNode, useCallback, useEffect, useReducer, useRef } from 'react';
-import { DictionaryContext } from './DictionaryContext';
-import { AxiosResponse } from 'axios';
-import { DictionaryResponse } from '../../interfaces/interfaces';
+import { DictionaryResponse, ErrorResponse } from '../../interfaces';
+import { AxiosError, AxiosResponse } from 'axios';
 import { dictionaryApi } from '../../api/dictionaryApi';
-import { dictionaryReducer } from './dictionaryReducer';
+import { dictionaryReducer, DictionaryContext } from '.';
 
 interface Props {
 	children: ReactNode;
 }
+const initialState = {
+	data: undefined,
+	query: '',
+	error: null,
+};
 
 export const DictionaryProvider: React.FC<Props> = ({ children }) => {
-	const initialState = {
-		data: undefined,
-		query: '',
-		inputValue: '',
-	};
 	const [state, dispatch] = useReducer(dictionaryReducer, initialState);
 	const debounceRef = useRef<ReturnType<typeof setTimeout>>();
-	const { inputValue, query, data } = state;
+	const { query, data, error } = state;
 
 	const fetchData = useCallback(async () => {
-		const response: AxiosResponse<DictionaryResponse[]> = await dictionaryApi.get(`/${query}`);
-		dispatch({ type: 'set_data', payload: response.data });
+		await dictionaryApi
+			.get<DictionaryResponse[]>(`/${query}`)
+			.then((response: AxiosResponse<DictionaryResponse[]>) => {
+				dispatch({ type: 'set_data', payload: response.data });
+			})
+			.catch((err: AxiosError<ErrorResponse>) => {
+				if (err.response) {
+					const { data } = err.response;
+					dispatch({ type: 'set_error', payload: `${data.message} ${data.resolution}` });
+				}
+			});
 	}, [query]);
 
 	const onQueryChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -36,13 +44,7 @@ export const DictionaryProvider: React.FC<Props> = ({ children }) => {
 		fetchData();
 	}, [fetchData, query]);
 
-	const setInputValue = (value: string) => {
-		dispatch({ type: 'set_input_value', payload: value });
-	};
-
 	return (
-		<DictionaryContext.Provider value={{ data, query, inputValue, setInputValue, fetchData, onQueryChange }}>
-			{children}
-		</DictionaryContext.Provider>
+		<DictionaryContext.Provider value={{ error, data, query, onQueryChange }}>{children}</DictionaryContext.Provider>
 	);
 };
