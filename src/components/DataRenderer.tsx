@@ -16,7 +16,7 @@ export const DataRenderer = () => {
 		}
 	}, [data]);
 	if (!data) {
-		return <>Loading</>;
+		return null
 	}
 	const dictionary = data[0];
 	return (
