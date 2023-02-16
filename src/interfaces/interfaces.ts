@@ -39,3 +39,10 @@ export interface Phonetic {
 	license?: License;
 }
 export type Font = 'font-mono' | 'font-serif' | 'font-sans';
+
+export interface DictionaryState {
+	data?: DictionaryResponse[] | undefined;
+	query: string;
+	error: null | string;
+	inputValue: string;
+}

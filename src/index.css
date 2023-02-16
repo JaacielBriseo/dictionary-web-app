@@ -6,8 +6,8 @@
 	background-position: right 15px center;
 }
 
-@layer base{
-	body{
-		@apply bg-white dark:bg-VeryDark
+@layer base {
+	body {
+		@apply bg-white dark:bg-VeryDark;
 	}
 }

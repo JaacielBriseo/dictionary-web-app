@@ -6,7 +6,7 @@ export const Navbar = () => {
 	return (
 		<div className='flex justify-between'>
 			<img src='/images/logo.svg' alt='Dictionary' />
-			<div className='flex justify-between items-center w-1/2'>
+			<div className='flex justify-between items-center w-1/2 md:w-1/4'>
 				<DropdownFontSelector />
 				<div className='bg-[#979797] w-[1px] h-[32px]' />
 				<div className='flex items-center space-x-2'>
